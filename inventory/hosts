@@ -2,7 +2,7 @@
 # nodename used by k8s cluster, you also could use the ip address 
 # nodename to k8s, clusterName to etcd
 [master]
-10.139.8.40 hostname=k8s-m1 nodename=172.16.1.3 clusterName=etcd-001
+10.139.8.40 hostname=k8s-m1 nodename=172.16.1.3 clusterName=etcd-001 INTERFACE_NAME=ens33 #default eth0
 #172.16.1.4 hostname=k8s-m2 nodename=172.16.1.4 clusterName=etcd-002
 #172.16.1.5 hostname=k8s-m3 nodename=172.16.1.5 clusterName=etcd-003
 
