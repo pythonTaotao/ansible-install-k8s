@@ -1,0 +1,11 @@
+{% for item in k8s_cluster_info %}
+expect <<EOF
+spawn ssh-copy-id -i /root/.ssh/id_rsa.pub root@{{ item.ip }}
+expect {
+"*yes/no*" { send "yes\r"; exp_continue}
+"*password:" { send "{{ ansible_ssh_pass }}\r" }
+}
+expect eof
+EOF
+
+{% endfor %}

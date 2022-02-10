@@ -1,6 +1,13 @@
 # PASSWD: zhangguanzhang
 ansible_ssh_port: 22
-ansible_ssh_pass: 'zhangguanzhang'
+ansible_ssh_pass: 'centos'
+
+
+k8s_cluster_info:
+  - ip: "192.168.110.150"
+    domainname: "k8s-m1"
+  - ip: "192.168.110.151"
+    domainname: "k8s-node1"
 
 ntp_type: chrony # or ntp
 ntp_servers: 

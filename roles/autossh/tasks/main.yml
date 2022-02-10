@@ -1,0 +1,27 @@
+- name: remove exiting key or rsa file
+  shell: rm -rf ~/.ssh
+
+- name: crete dir save keypair
+  file: name=/root/.ssh state=directory
+
+- name: Install expect
+  yum:
+    name: expect
+    state: latest
+
+- name: copy ssh-key-gen.sh to nodes
+  copy:
+    src: ./files/ssh-key-gen.sh
+    dest: /root/.ssh/
+
+- name: run ssh-key-gen.sh to create ssh key pair
+  shell: "sh ~/.ssh/ssh-key-gen.sh"
+
+- name: distribute ssh_pubkey script to nodes
+  template:
+    src: distribute_ssh_pubkey.sh.j2
+    dest: ~/.ssh/distribute_ssh_pubkey.sh
+
+- name: run script tp scp ssh_pubkey to nodes
+  shell: "sh ~/.ssh/distribute_ssh_pubkey.sh"
+
